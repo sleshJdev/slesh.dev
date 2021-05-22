@@ -10,16 +10,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v2
     - name: Setup SSH
       uses: MrSquaare/ssh-setup-action@v1
       with:
-        host: @${{ secrets.EC2_HOST }}
+        host: ${{ secrets.EC2_HOST }}
         private-key: ${{ secrets.PRIVATE_KEY }}
-    - name: Clone repository
-      run: git clone git@github.com:username/repository.gi      
-      - uses: actions/checkout@v2
-      - name: rsync deployments
-        uses: contention/rsync-deployments@v1.0.0        
-      - name: Run a multi-line script
-        run: |
+    - name: Rsync deployments
+      uses: contention/rsync-deployments@v1.0.0        
+    - name: Upload static files
+      run: |
           rsync -rav ./frontend/* ${{ secrets.EC2_INSTANCE_USER }}@${{ secrets.EC2_HOST }}:/opt/app/
