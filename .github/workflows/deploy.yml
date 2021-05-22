@@ -11,8 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - name: Deploy frontend
-      uses: easingthemes/ssh-deploy@v2.1.5
     - name: Debug
       run: |
         ls -lah
@@ -20,6 +18,8 @@ jobs:
         ls -lah /home/runner/work/slesh.dev
         ls -lah /home/runner/work/slesh.dev/slesh.dev
         ls -lah /home/runner/work/slesh.dev/slesh.dev/frontend
+    - name: Deploy frontend
+      uses: easingthemes/ssh-deploy@v2.1.5    
       env:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         ARGS: "-rav"
