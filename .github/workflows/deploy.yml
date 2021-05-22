@@ -22,9 +22,9 @@ jobs:
       uses: easingthemes/ssh-deploy@v2.1.5    
       env:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-        ARGS: "-rav"
-        SOURCE: "frontend/"
+        ARGS: "-av"
+        SOURCE: "./frontend/"
         REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
         REMOTE_USER: ${{ secrets.REMOTE_USER }}
         TARGET: ${{ secrets.REMOTE_TARGET }}
-        EXCLUDE: "frontend/dist/"
+        EXCLUDE: "./frontend/dist/"
