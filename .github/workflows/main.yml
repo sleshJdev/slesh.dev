@@ -12,6 +12,7 @@ jobs:
     - uses: actions/setup-node@v2
       with:
         node-version: "14"
+    - run: ls -lah
     - run: npm build
     - name: rsync deployments
       uses: burnett01/rsync-deployments@5.2
