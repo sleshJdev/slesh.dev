@@ -1,0 +1,7 @@
+.center {
+    vertical-align: middle;
+    text-align: center;
+}
+.active {
+    font-weight: bold;
+}

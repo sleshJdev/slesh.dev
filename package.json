@@ -1,0 +1,42 @@
+{
+  "name": "slesh.dev",
+  "version": "1.0.0",
+  "description": "Personal blog",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rimraf build",
+    "build:css": "minify src/style.css > build/style.css",
+    "watch:css": "watch 'npm run build:css' src",
+    "build:js": "minify src/script.js > build/script.js",
+    "watch:js": "watch 'npm run build:js' src",
+    "build:html": "minify src/index.html > build/index.html; minify src/about.html > build/about.html",
+    "watch:html": "watch 'npm run build:html' src",
+    "build": "npm run clean && mkdir -p build && npm run build:css && npm run build:js && npm run build:html",
+    "build:watch": "parallelshell 'npm run watch:js' 'npm run watch:css' 'npm run watch:html'",
+    "livereload": "browser-sync start --server build/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sleshJdev/slesh.dev.git"
+  },
+  "keywords": [
+    "blog",
+    "dot",
+    "slesh",
+    "dot",
+    "dev"
+  ],
+  "author": "slesh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sleshJdev/slesh.dev/issues"
+  },
+  "homepage": "https://github.com/sleshJdev/slesh.dev#readme",
+  "devDependencies": {
+    "browser-sync": "latest",
+    "minify": "latest",
+    "parallelshell": "github:darkguy2008/parallelshell#8fd83e2",
+    "rimraf": "latest",
+    "watch": "latest"
+  }
+}
