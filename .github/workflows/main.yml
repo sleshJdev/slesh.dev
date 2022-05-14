@@ -13,7 +13,7 @@ jobs:
       with:
         node-version: "14"
     - run: npm build
-        - name: rsync deployments
+    - name: rsync deployments
       uses: burnett01/rsync-deployments@5.2
       with:
         switches: -avzr --delete
