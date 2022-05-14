@@ -12,8 +12,18 @@ jobs:
     - uses: actions/setup-node@v2
       with:
         node-version: "14"
-    - run: npm install
-    - run: npm build
+    - uses: actions/cache@v3
+      id: nodecache
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          ${{ runner.os }}-node-
+          ${{ runner.os }}
+    - if: steps.nodecache.outputs.cache-hit != true
+      run: npm install
+    - run: npm run build
     - run: ls -lah
     - name: rsync deployments
       uses: burnett01/rsync-deployments@5.2
