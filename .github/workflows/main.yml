@@ -17,5 +17,5 @@ jobs:
       env:
         SOURCE: "./build/"
         HOST: ${{ secrets.REMOTE_HOST }}
-        KEY: ${{secrets.DEPLOY_SSH_KEY}}
+        KEY: ${{secrets.SSH_PRIVATE_KEY}}
         TARGET: ${{ secrets.REMOTE_TARGET }}
