@@ -15,7 +15,7 @@ jobs:
     - run: npm build
     - uses: up9cloud/action-rsync@master
       env:
-        SOURCE: "./build/"
-        HOST: ${{ secrets.REMOTE_HOST }}
+        SOURCE: ./build/
+        HOST: slesh.dev
         KEY: ${{secrets.SSH_PRIVATE_KEY}}
-        TARGET: ${{ secrets.REMOTE_TARGET }}
+        TARGET: /var/www/slesh.dev/html/
