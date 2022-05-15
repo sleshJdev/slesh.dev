@@ -1,7 +1,21 @@
-.center {
+.nav {
+    padding: .5em;
+}
+
+.posts {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.posts article {
+    border: 1px dashed black;
+}
+
+.text--center {
     vertical-align: middle;
     text-align: center;
 }
+
 .active {
     font-weight: bold;
 }
